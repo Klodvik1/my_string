@@ -1,6 +1,6 @@
 #include "mystring.h"
 
-void *my_memchr(const void *str, int c, size_t n) {
+void* myString::my_memchr(const void *str, int c, size_t n) {
   char *ptr = (char *)str;
   void *res = NULL;
 
@@ -16,7 +16,7 @@ void *my_memchr(const void *str, int c, size_t n) {
   return res;
 }
 
-int my_memcmp(const void *str1, const void *str2, size_t n) {
+int myString::my_memcmp(const void *str1, const void *str2, size_t n) {
   char *ptr1 = (char *)str1;
   char *ptr2 = (char *)str2;
   int cmp = 0;
@@ -32,7 +32,7 @@ int my_memcmp(const void *str1, const void *str2, size_t n) {
   return cmp;
 }
 
-void *my_memcpy(void *dest, const void *src, size_t n) {
+void* myString::my_memcpy(void *dest, const void *src, size_t n) {
   char *cdest = (char *)dest;
   const char *csrc = (char *)src;
 
@@ -43,7 +43,7 @@ void *my_memcpy(void *dest, const void *src, size_t n) {
   return dest;
 }
 
-void *my_memmove(void *dest, const void *src, size_t n) {
+void* myString::my_memmove(void *dest, const void *src, size_t n) {
   void *ret = dest;
 
   if (dest <= src || (char *)dest >= ((char *)src + n)) {
@@ -65,7 +65,7 @@ void *my_memmove(void *dest, const void *src, size_t n) {
   return ret;
 }
 
-char *my_strcat(char *dest, const char *src) {
+char* myString::my_strcat(char *dest, const char *src) {
   char *ptr = dest;
 
   while (*dest != '\0') {
@@ -81,7 +81,7 @@ char *my_strcat(char *dest, const char *src) {
   return ptr;
 }
 
-char *my_strncat(char *dest, const char *src, size_t n) {
+char* myString::my_strncat(char *dest, const char *src, size_t n) {
   char *ptr = dest;
 
   while (*dest != '\0') {
@@ -98,7 +98,7 @@ char *my_strncat(char *dest, const char *src, size_t n) {
   return ptr;
 }
 
-char *my_strchr(const char *str, int c) {
+char* myString::my_strchr(const char *str, int c) {
   char *ptr = (char *)str;
 
   for (; (*ptr != (unsigned char)c) && (*ptr != '\0'); ptr++) {
@@ -110,7 +110,7 @@ char *my_strchr(const char *str, int c) {
   return ptr;
 }
 
-int my_strcmp(const char *str1, const char *str2) {
+int myString::my_strcmp(const char *str1, const char *str2) {
   int res = 0;
 
   if (str1 && str2) {
@@ -126,7 +126,7 @@ int my_strcmp(const char *str1, const char *str2) {
   return res;
 }
 
-int my_strncmp(const char *str1, const char *str2, size_t n) {
+int myString::my_strncmp(const char *str1, const char *str2, size_t n) {
   int res = 0;
 
   if (str1 && str2 && n > 0) {
@@ -141,7 +141,7 @@ int my_strncmp(const char *str1, const char *str2, size_t n) {
   return res;
 }
 
-char *my_strcpy(char *dest, const char *src) {
+char* myString::my_strcpy(char *dest, const char *src) {
   char *ptr = dest;
 
   while (*src != '\0') {
@@ -153,7 +153,7 @@ char *my_strcpy(char *dest, const char *src) {
   return ptr;
 }
 
-char *my_strncpy(char *dest, const char *src, size_t n) {
+char* myString::my_strncpy(char *dest, const char *src, size_t n) {
   char *ptr = dest;
 
   while (*src && n-- && (dest != NULL)) {
@@ -165,7 +165,7 @@ char *my_strncpy(char *dest, const char *src, size_t n) {
   return ptr;
 }
 
-size_t my_strcspn(const char *str1, const char *str2) {
+size_t myString::my_strcspn(const char *str1, const char *str2) {
   size_t result = 0;
   bool flag = false;
 
@@ -184,7 +184,7 @@ size_t my_strcspn(const char *str1, const char *str2) {
   return result;
 }
 
-size_t my_strlen(const char *str) {
+size_t myString::my_strlen(const char *str) {
   size_t count = 0;
 
   while (*str != '\0') {
@@ -195,7 +195,7 @@ size_t my_strlen(const char *str) {
   return count;
 }
 
-const char *my_strpbrk(const char *str1, const char *str2) {
+const char* myString::my_strpbrk(const char *str1, const char *str2) {
   char *ptr = NULL;
 
   for (const char *i = str1; *i; i++) {
@@ -214,7 +214,7 @@ const char *my_strpbrk(const char *str1, const char *str2) {
   return ptr;
 }
 
-char *my_strrchr(const char *str, int c) {
+char* myString::my_strrchr(const char *str, int c) {
   char *ptr = (char *)str;
 
   for (; *ptr != '\0'; ptr++) {
@@ -230,7 +230,7 @@ char *my_strrchr(const char *str, int c) {
   return ptr;
 }
 
-size_t my_strspn(const char *str1, const char *str2) {
+size_t myString::my_strspn(const char *str1, const char *str2) {
   size_t i;
   bool flag = false;
 
@@ -249,7 +249,7 @@ size_t my_strspn(const char *str1, const char *str2) {
   return i;
 }
 
-const char *my_strstr(const char *haystack, const char *needle) {
+const char* myString::my_strstr(const char *haystack, const char *needle) {
   char *hst = (char *)haystack;
   char *ndl = (char *)needle;
   char *res = NULL;
@@ -272,7 +272,7 @@ const char *my_strstr(const char *haystack, const char *needle) {
   return res;
 }
 
-char *my_strtok(char *str, const char *delim) {
+char* myString::my_strtok(char *str, const char *delim) {
   static char *s = NULL;
   char *ret = NULL;
 
@@ -302,4 +302,44 @@ char *my_strtok(char *str, const char *delim) {
   }
 
   return ret;
+}
+
+void path::input_path(char* str){
+    if (str == NULL){
+        std::cout << "ERROR::Try to input the path to the file" << std::endl;;
+    } else if (str[0] == '\n'){
+      std::cout << "ERROR::Try to input the path to the file" << std::endl;;
+    } else {
+      std::ifstream file(str);
+      if (!file.is_open()){
+        std::cout << "ERROR::There is no such file" << std::endl;;
+      } else {
+        if (path_file != NULL){
+          delete_path();
+          number_paths--;
+        }
+        number_paths++;
+        path_file = new char[my_strlen(str)+1];
+        my_strcpy(path_file, str);
+        file.close();
+      }
+    }
+    std::cout << number_paths;
+}
+
+void path::output_path(){
+  if(path_file != NULL){
+    std::cout << path_file << std::endl;
+  } else {
+    std::cout << "ERROR::Input the path" << std::endl;
+  }
+}
+
+void path::delete_path(){
+  if(path_file != NULL){
+    delete(path_file);
+    path_file = NULL;
+  } else {
+    std::cout << "ERROR::The patch has already been deleted or you didn't input it" << std::endl;
+  }
 }

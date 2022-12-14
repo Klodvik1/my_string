@@ -1,6 +1,9 @@
+#pragma once
 #include <cstdlib>
+#include <fstream>
+#include <iostream>
 
-class String {
+class myString {
     public:
         void *my_memchr(const void *str, int c, size_t n);
         int my_memcmp(const void *str1, const void *str2, size_t n);
@@ -20,4 +23,19 @@ class String {
         size_t my_strspn(const char *str1, const char *str2);
         const char *my_strstr(const char *haystack, const char *needle);
         char *my_strtok(char *str, const char *delim);
+};
+
+class path: myString{
+    protected:
+        char* path_file = NULL;
+        static inline int number_paths = 0;
+    public:
+        void input_path(char*);
+        void output_path();
+        void delete_path();
+};
+
+class work_file: path {
+    public:
+        void output_file();
 };
