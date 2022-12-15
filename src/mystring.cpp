@@ -195,25 +195,6 @@ size_t myString::my_strlen(const char *str) {
   return count;
 }
 
-const char* myString::my_strpbrk(const char *str1, const char *str2) {
-  char *ptr = NULL;
-
-  for (const char *i = str1; *i; i++) {
-    for (const char *j = str2; *j; j++) {
-      if (*i == *j) {
-        ptr = (char *)i;
-        break;
-      }
-    }
-
-    if (ptr != NULL) {
-      break;
-    }
-  }
-
-  return ptr;
-}
-
 char* myString::my_strrchr(const char *str, int c) {
   char *ptr = (char *)str;
 
@@ -228,25 +209,6 @@ char* myString::my_strrchr(const char *str, int c) {
   }
 
   return ptr;
-}
-
-size_t myString::my_strspn(const char *str1, const char *str2) {
-  size_t i;
-  bool flag = false;
-
-  for (i = 0; str1[i] != '\0'; i++) {
-    for (size_t j = 0; str2[j] != str1[i]; j++) {
-      if (str2[j] == '\0') {
-        flag = true;
-        break;
-      }
-    }
-    if (flag == true) {
-      break;
-    }
-  }
-
-  return i;
 }
 
 const char* myString::my_strstr(const char *haystack, const char *needle) {
@@ -314,6 +276,13 @@ void path::input_path(char* str){
       if (!file.is_open()){
         std::cout << "ERROR::There is no such file" << std::endl;;
       } else {
+        while( !file.eof()) {
+          char ch;
+          file.get(ch);
+          if (ch == '\n' && !file.eof()){
+            number_string++;
+          }
+        }
         if (path_file != NULL){
           delete_path();
           number_paths--;
@@ -324,12 +293,12 @@ void path::input_path(char* str){
         file.close();
       }
     }
-    std::cout << number_paths;
 }
 
 void path::output_path(){
   if(path_file != NULL){
-    std::cout << path_file << std::endl;
+    std::cout << "\nNumber of string in the file : "<< number_string << std::endl;
+    std::cout << "\n" << path_file << std::endl;
   } else {
     std::cout << "ERROR::Input the path" << std::endl;
   }
@@ -342,4 +311,71 @@ void path::delete_path(){
   } else {
     std::cout << "ERROR::The patch has already been deleted or you didn't input it" << std::endl;
   }
+}
+
+void  work_string::output_file(){
+  if (path_file != NULL){
+    std::ifstream file(path_file);
+    char ch = '\n';
+    int i = 1;
+   while( !file.eof()) {
+      if (ch == '\n'){
+        std::cout << i++ << ": ";
+      }
+      file.get(ch);
+      if (!file.eof()){
+        std::cout << ch;
+      }
+    }
+    file.close();
+  } else {
+    std::cout << "ERROR::Input the path" << std::endl;
+  }
+}
+
+void  work_string::output_file(int n){
+  if((n<number_string+1) && (n>0)){
+    std::ifstream file(path_file);
+    char ch;
+    int number=1;
+    std::cout << n << ": ";
+    while( !file.eof()) {
+        file.get(ch);
+        if (!file.eof() ){
+          if (number == n ){
+            std::cout << ch;
+          }
+          if (ch == '\n'){
+            number++;
+          }
+        }
+    }
+    file.close();
+  } else {
+    std::cout << "ERROR::Incorrect string number" << std::endl;
+  }
+}
+
+void work_string::cat_string(int n, int k){
+  if((n<number_string+1) && (n>0)){
+    std::ifstream file(path_file);
+    char ch;
+    int number=1;
+    int i=0;
+    while( !file.eof()) {
+        file.get(ch);
+        if (!file.eof() ){
+          if (number == n ){
+            my_strcat(str, &ch);
+          }
+          if (ch == '\n'){
+            number++;
+          }
+        }
+    }
+    file.close();
+    my_strcat(str, "HELL");
+  }
+  
+
 }
