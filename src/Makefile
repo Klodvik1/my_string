@@ -1,17 +1,15 @@
 CC = g++
-CFLAGS = -Wall -Wextra -Werror
-TARGET = s21_cat
+CFLAGS = -Wall -Wextra -Werror -std=c++17
+TARGET = main
 
 all: clean main
 
 main: clean
-	$(CC) $(CFLAGS) ./main.cpp -o ./main.o
-#$(CC) $(CFLAGS) ./mystring.cpp -o ./mystring.o
-	$(CC) $(CFLAGS) ./*.o -o ./$(TARGET_1)
-
+	$(CC) $(CFLAGS) -c main.cpp -o main.o
+	$(CC) $(CFLAGS) -c mystring.cpp -o mystring.o
+	$(CC) $(CFLAGS) *.o -o $(TARGET).out
 
 clean:
-	rm -rf *.o *.a *.out *.info *.html *.gc* 
-	
+	rm -rf *.o *.out
 
 rebuild: all
