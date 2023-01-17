@@ -3,7 +3,7 @@
 #include <iostream>
 using std::ostream;
 using std::istream;
-
+ 
 class Abstr {
   public:
     virtual void *my_memchr(void) = 0;
@@ -25,7 +25,7 @@ class Abstr {
     virtual const char *my_strstr(void) = 0;
     virtual char *my_strtok(void) = 0;
   };
-
+ 
 class myString_h: public Abstr{
     public:
         void *my_memchr(const void *str, int c, size_t n);
@@ -46,7 +46,7 @@ class myString_h: public Abstr{
         const char *my_strstr(const char *haystack, const char *needle);
         char *my_strtok(char *str, const char *delim);
 };
-
+ 
 class String{
     private:
         char* str;     
@@ -59,7 +59,7 @@ class String{
         String(const String &);  
         ~String();                
         int length() { return len; }
-
+ 
         String & operator=(const String &);
         String & operator=(const char *);
         char & operator[](int);
@@ -67,16 +67,16 @@ class String{
         void stringlow();
         void stringup();
         static int HowMany();
-
+ 
         friend bool operator<(const String &, const String &);
         friend bool operator==(const String &, const String &);
         friend bool operator!=(const String &, const String &);
         friend bool operator>(const String &, const String &);
         friend String operator+(const String&, const String&);
-
+ 
         friend ostream & operator<<(ostream & os, const String &st2);
         friend istream & operator>>(istream & is, String & st);
-
+ 
         void append(int, char);
         void append(const String &);
         void append(const String &, size_t, size_t);

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "mystring.h"
-
+ 
 int main() {
     String buffer[10] = {"Hello ", "Bye ", "Welcom ", "wOrLd "};
     String str2(buffer[2]);
